@@ -18,9 +18,8 @@ function Chart() {
     }
 
     return (
-        // <ResponsiveContainer width="100%" height="100%">
         <div className="Chart">
-            <ResponsiveContainer width={700} height={400}>
+            <ResponsiveContainer width="100%" height="100%">
                 <BarChart
                     data={data}
                     margin={{
@@ -29,12 +28,13 @@ function Chart() {
                         left: 30,
                         bottom: 5
                     }}>
-                    <XAxis dataKey="name" />
-                    <YAxis />
+                    <XAxis dataKey="name" tick={false}/>
+                    <YAxis hide={true}/>
                     <Tooltip />
                     <Legend />
                     <Bar
                         dataKey="powerPercent"
+                        name="% FTP"
                         fill="#8884d8" >
                         {data.map((entry, index) => (
                             <Cell key={`cell-${index}`}

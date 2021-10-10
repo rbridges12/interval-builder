@@ -39,25 +39,7 @@ function clearSvg(svgClassName) {
 }
 
 function ChartW(props) {
-    const data = [
-        {
-            valueY: 10,
-            valueX: 10,
-            color: '#68d391',
-        },
-        {
-            valueY: 20,
-            valueX: 20,
-            color: '#48bb78',
-        },
-        {
-            valueY: 30,
-            valueX: 30,
-            color: '#38a169',
-        },
-    ];
-
-    const { svgWidth, svgHeight, margin } = props;
+    const { svgWidth, svgHeight, margin, data, spacing } = props;
 
     useEffect(() => {
         clearSvg('.svg-container');
@@ -65,12 +47,14 @@ function ChartW(props) {
         const height = svgHeight - margin.top - margin.bottom;
         const svg = createSvg('.svg-container', svgWidth, svgHeight);
         const group = createSvgGroup(svg, margin);
+        const defaultSpacing = 3;
+        const space = (spacing || defaultSpacing);
 
         const x = linearScale([0, width]);
         const y = linearScale([height, 0]);
 
         const xScaleValue = data.reduce((acc, curr) => {
-            return acc + curr.valueX;
+            return acc + curr.valueX + space;
         }, 0)
 
         const yScaleValue = data.map(datum => datum.valueY);
@@ -79,9 +63,9 @@ function ChartW(props) {
         y.domain([0, d3.max(yScaleValue)]);
 
         // X axis
-        createXAxis(group, height, x);
+        // createXAxis(group, height, x);
         // Y axis
-        createYAxis(group, y);
+        // createYAxis(group, y);
 
         group
             .selectAll('bar')
@@ -93,21 +77,17 @@ function ChartW(props) {
                 const xValues = data.map(datum => datum.valueX);
                 let values = [0, ...xValues];
                 values = values.map((value, index) =>
-                    values.slice(0, index + 1).reduce((a, b) => a + b)
+                    values.slice(0, index + 1).reduce((a, b) => a + b + space)
                 );
                 return x(values[i]);
             })
             .attr('width', datum => x(datum.valueX))
-            .attr('y', function (datum) {
-                return y(datum.valueY);
-            })
-            .attr('height', function (datum) {
-                return height - y(datum.valueY);
-            })
-    }, [svgWidth, svgHeight, margin]);
+            .attr('y', datum => y(datum.valueY))
+            .attr('height', datum => height - y(datum.valueY))
+    }, [svgWidth, svgHeight, margin, data, spacing]);
+
     return (
         <Fragment>
-            <h1 className="text-2xl text-center">{"Title"}</h1>
             <div className="svg-container"></div>
         </Fragment>
     );

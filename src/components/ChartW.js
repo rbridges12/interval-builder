@@ -1,11 +1,12 @@
 // Starter code taken from https://github.com/amberwebb/d3-charts/blob/master/src/App/index.js
 
-import React, { useEffect, Fragment } from 'react'
-import * as d3 from 'd3'
+import React, { useEffect, Fragment } from 'react';
+import * as d3 from 'd3';
 import { axisBottom, axisLeft, scaleLinear, select } from 'd3';
 
 
 // Chart Utils
+// TODO: put chart utils in different file?
 function linearScale(rangeValues) {
     return scaleLinear().range(rangeValues)
 }
@@ -26,6 +27,7 @@ function createSvg(svgClassName, svgWidth, svgHeight) {
         .append('svg')
         .attr('width', svgWidth)
         .attr('height', svgHeight)
+        // .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
 }
 
 function createSvgGroup(svg, margin) {
@@ -38,6 +40,8 @@ function clearSvg(svgClassName) {
     return select(`${svgClassName} svg`).remove()
 }
 
+// TODO: option for rounded corners on the bars
+// TODO: make chart responsive
 function ChartW(props) {
     const { svgWidth, svgHeight, margin, data, spacing } = props;
 

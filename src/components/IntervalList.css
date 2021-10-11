@@ -1,0 +1,35 @@
+
+table {
+    border: 2px solid rgba(128, 128, 128, 0.11);
+    border-collapse: collapse;
+    color: white;
+    margin: 25px 0;
+    min-width: 500px;
+    text-align: left;
+        /* box-shadow: 0 0 20px rgba(128, 128, 128, 0.11); */
+    /* padding-top: 5%;
+    padding-right: 10%;
+    padding-left: 10%;
+    padding-bottom: 10%; */
+}
+
+th {
+    font-size: calc(14px + 1vmin);
+}
+
+tbody {
+    font-size: calc(10px + 1vmin);
+}
+
+th, td {
+    border-bottom: 2px solid gray;
+    padding: 8px 15px;
+}
+
+tr:hover {
+    background-color: gray;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.11);
+}

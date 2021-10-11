@@ -1,6 +1,6 @@
 import './App.css';
-import Chart from './Chart';
 import ChartW from './ChartW';
+import IntervalList from './IntervalList';
 import { interpolateTurbo } from 'd3-scale-chromatic';
 
 function getColor(powerPercent) {
@@ -23,18 +23,25 @@ function App() {
     <div className="App">
       <header className="App-header">
         Interval Builder
-        <ChartW
-          data={data}
-          spacing={1}
-          svgWidth={500}
-          svgHeight={400}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 30,
-            bottom: 5
-          }} />
       </header>
+      <div className="IntervalDataContainer">
+        <div className="IntervalList" >
+          <IntervalList />
+        </div>
+        <div className="Chart">
+          <ChartW
+            data={data}
+            spacing={3}
+            svgWidth={600}
+            svgHeight={500}
+            margin={{
+              top: 5,
+              right: 30,
+              left: 30,
+              bottom: 5
+            }} />
+        </div>
+      </div>
     </div>
   );
 }

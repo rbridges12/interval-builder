@@ -3,6 +3,7 @@
 import React, { useEffect, Fragment } from 'react';
 import * as d3 from 'd3';
 import { axisBottom, axisLeft, scaleLinear, select } from 'd3';
+import { interpolateTurbo } from 'd3-scale-chromatic';
 
 
 // Chart Utils
@@ -27,7 +28,7 @@ function createSvg(svgClassName, svgWidth, svgHeight) {
         .append('svg')
         .attr('width', svgWidth)
         .attr('height', svgHeight)
-        // .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
+    // .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
 }
 
 function createSvgGroup(svg, margin) {
@@ -38,6 +39,11 @@ function createSvgGroup(svg, margin) {
 
 function clearSvg(svgClassName) {
     return select(`${svgClassName} svg`).remove()
+}
+
+function getColor(powerPercent) {
+    let scaledPower = 0.2 + (powerPercent / 500);
+    return interpolateTurbo(scaledPower);
 }
 
 // TODO: option for rounded corners on the bars
@@ -59,10 +65,10 @@ function ChartW(props) {
         const y = linearScale([height, 0]);
 
         const xScaleValue = data.reduce((acc, curr) => {
-            return acc + curr.valueX + space;
+            return acc + curr.duration + space;
         }, 0)
 
-        const yScaleValue = data.map(datum => datum.valueY);
+        const yScaleValue = data.map(datum => datum.power);
 
         x.domain([0, xScaleValue]);
         y.domain([0, d3.max(yScaleValue)]);
@@ -77,18 +83,18 @@ function ChartW(props) {
             .data(data)
             .enter()
             .append('rect')
-            .attr('fill', datum => datum.color)
+            .attr('fill', datum => getColor(datum.power))
             .attr('x', function (datum, i) {
-                const xValues = data.map(datum => datum.valueX);
+                const xValues = data.map(datum => datum.duration);
                 let values = [0, ...xValues];
                 values = values.map((value, index) =>
                     values.slice(0, index + 1).reduce((a, b) => a + b + space)
                 );
                 return x(values[i]);
             })
-            .attr('width', datum => x(datum.valueX))
-            .attr('y', datum => y(datum.valueY))
-            .attr('height', datum => height - y(datum.valueY))
+            .attr('width', datum => x(datum.duration))
+            .attr('y', datum => y(datum.power))
+            .attr('height', datum => height - y(datum.power))
     }, [svgWidth, svgHeight, margin, data, spacing]);
 
     return (

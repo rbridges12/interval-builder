@@ -4,7 +4,7 @@ import './IntervalList.css';
 
 
 // TODO: make table rows clickable and editable, maybe also drag and droppable to reorder
-function IntervalList() {
+function IntervalList(props) {
     const data = React.useMemo(
         () => [
             {

@@ -3,6 +3,7 @@ import { useFlexLayout, useTable } from 'react-table';
 import './IntervalList.css';
 
 
+// TODO: make table rows clickable and editable, maybe also drag and droppable to reorder
 function IntervalList() {
     const data = React.useMemo(
         () => [

@@ -42,6 +42,7 @@ function clearSvg(svgClassName) {
 
 // TODO: option for rounded corners on the bars
 // TODO: make chart responsive
+// TODO: add tooltips to bars that display interval data
 function ChartW(props) {
     const { svgWidth, svgHeight, margin, data, spacing } = props;
 

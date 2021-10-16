@@ -2,6 +2,7 @@ import './App.css';
 import ChartW from './ChartW';
 import IntervalList from './IntervalList';
 import { interpolateTurbo } from 'd3-scale-chromatic';
+import AddInterval from './AddInterval';
 
 function getColor(powerPercent) {
   let scaledPower = 0.2 + (powerPercent / 500);
@@ -17,7 +18,7 @@ function App() {
       color: getColor(10 * i),
     });
   }
-  console.log(data);
+  // console.log(data);
 
   return (
     <div className="App">
@@ -41,6 +42,10 @@ function App() {
               bottom: 5
             }} />
         </div>
+      </div>
+
+      <div>
+        <AddInterval />
       </div>
     </div>
   );

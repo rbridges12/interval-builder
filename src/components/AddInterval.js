@@ -31,25 +31,31 @@ class AddInterval extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>
-                    Duration:
-                    <input
-                        name="duration"
-                        type="text"
-                        value={this.state.duration}
-                        onChange={this.handleInputChange} />
-                </label>
-                <label>
-                    % FTP:
-                    <input
-                        name="ftp_percent"
-                        type="text"
-                        value={this.state.ftp_percent}
-                        onChange={this.handleInputChange} />
-                </label>
-                <input type="submit" value="Add" />
-            </form>
+            <fieldset>
+                <legend>Add Interval</legend>
+                <form onSubmit={this.handleSubmit}>
+                    <label>
+                        Duration (minutes):
+                        <input
+                            name="duration"
+                            type="text"
+                            className="duration"
+                            value={this.state.duration}
+                            onChange={this.handleInputChange} />
+                    </label>
+                    <br />
+                    <label>
+                        Power (watts):
+                        <input
+                            name="ftp_percent"
+                            type="text"
+                            value={this.state.ftp_percent}
+                            onChange={this.handleInputChange} />
+                    </label>
+                    <br />
+                    <input type="submit" value="Add" />
+                </form>
+            </fieldset>
         );
     }
 

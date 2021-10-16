@@ -44,7 +44,7 @@ function App() {
         </div>
       </div>
 
-      <div>
+      <div className="AddInterval">
         <AddInterval />
       </div>
     </div>

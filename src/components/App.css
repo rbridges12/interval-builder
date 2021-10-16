@@ -1,6 +1,8 @@
 .App {
   text-align: center;
-  background-color: #282c34;
+  /* background-color: #282c34; */
+  background-color: #212121;
+  padding-bottom: 10%;
 }
 
 .App-header {
@@ -17,10 +19,10 @@
   align-items: center;
   justify-content: center;
   display: flex; flex-direction: row;
-  padding-top: 5%;
+  padding-top: 0%;
   padding-right: 5%;
   padding-left: 5%;
-  padding-bottom: 20%;
+  padding-bottom: 5%;
 }
 
 .Chart {
@@ -28,4 +30,9 @@
   padding-right: 0%;
   padding-left: 5%;
   /* padding-bottom: 10%; */
+}
+
+.AddInterval {
+  align-items: center;
+  justify-content: center;
 }

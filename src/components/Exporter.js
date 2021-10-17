@@ -21,7 +21,7 @@ function toMRC(data) {
 
     // file interval data
     let current_time = 0;
-    for (let interval in data) {
+    for (const interval of data) {
 
         // start of interval
         fileString += (

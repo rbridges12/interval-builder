@@ -13,9 +13,9 @@ function getTestData() {
       power: 10 * i,
     });
   }
-  // console.log(data);
   return data;
 }
+
 
 class App extends React.Component {
   constructor(props) {
@@ -23,6 +23,21 @@ class App extends React.Component {
     this.state = {
       interval_data: getTestData(),
     }
+
+    this.handleIntervalAddition = this.handleIntervalAddition.bind(this);
+  }
+
+  handleIntervalAddition(event) {
+    const new_duration = Number(event.target.duration.value);
+    const new_power = Number(event.target.power.value);
+    const new_interval = {
+      duration: new_duration,
+      power: new_power,
+    }
+    this.setState(prevState => ({
+      interval_data: [...prevState.interval_data, new_interval]
+    }));
+    event.preventDefault();
   }
 
   render() {
@@ -52,7 +67,7 @@ class App extends React.Component {
 
         <div className="AddInterval">
           <div>
-            <AddInterval />
+            <AddInterval handleSubmit={this.handleIntervalAddition}/>
           </div>
         </div>
       </div>

@@ -32,9 +32,16 @@
   /* padding-bottom: 10%; */
 }
 
-.AddInterval {
+.AddIntervals {
   align-items: center;
   justify-content: center;
   display: flex;
   flex-direction: row;
+}
+
+.AddInterval, .AddIntervalSet {
+  padding-top: 0%;
+  padding-right: 5%;
+  padding-left: 5%;
+  padding-bottom: 5%;
 }

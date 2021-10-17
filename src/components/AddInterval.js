@@ -10,8 +10,7 @@ function AddInterval(props) {
                     Duration:
                     <input
                         name="duration"
-                        type="text"
-                        className="duration" />
+                        type="text" />
                 </label>
                 <br />
                 <label>

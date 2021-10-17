@@ -2,6 +2,7 @@ import './App.css';
 import ChartW from './ChartW';
 import IntervalList from './IntervalList';
 import AddInterval from './AddInterval';
+import AddIntervalSet from './AddIntervalSet';
 import React from 'react';
 
 
@@ -25,6 +26,7 @@ class App extends React.Component {
     }
 
     this.handleIntervalAddition = this.handleIntervalAddition.bind(this);
+    this.handleIntervalSetAddition = this.handleIntervalSetAddition.bind(this);
   }
 
   handleIntervalAddition(event) {
@@ -36,6 +38,33 @@ class App extends React.Component {
     }
     this.setState(prevState => ({
       interval_data: [...prevState.interval_data, new_interval]
+    }));
+    event.preventDefault();
+  }
+
+  // TODO: option to exclude last rest
+  handleIntervalSetAddition(event) {
+    const target = event.target;
+    const on_duration = Number(target.on_duration.value);
+    const on_power = Number(target.on_power.value);
+    const off_duration = Number(target.off_duration.value);
+    const off_power = Number(target.off_power.value);
+    const reps = Number(target.reps.value);
+
+    let interval_set = [];
+    for (let i = 0; i < reps; i++) {
+      interval_set.push({
+        duration: on_duration,
+        power: on_power,
+      });
+      interval_set.push({
+        duration: off_duration,
+        power: off_power,
+      });
+    }
+
+    this.setState(prevState => ({
+      interval_data: [...prevState.interval_data, ...interval_set]
     }));
     event.preventDefault();
   }
@@ -65,9 +94,12 @@ class App extends React.Component {
           </div>
         </div>
 
-        <div className="AddInterval">
-          <div>
-            <AddInterval handleSubmit={this.handleIntervalAddition}/>
+        <div className="AddIntervals">
+          <div className="AddInterval">
+            <AddInterval handleSubmit={this.handleIntervalAddition} />
+          </div>
+          <div className="AddIntervalSet">
+            <AddIntervalSet handleSubmit={this.handleIntervalSetAddition} />
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
-import React from 'react';
-import './AddInterval.css';
+import './AddIntervalSet.css';
 
 function AddInterval(props) {
     return (

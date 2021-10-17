@@ -1,0 +1,11 @@
+a {
+    color: white;
+    font-size: calc(14px + 1vmin);
+    text-decoration: none;
+    padding: 8px;
+}
+
+a:hover {
+    border: 2px solid white;
+    border-radius: 40px;
+}

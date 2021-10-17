@@ -1,4 +1,3 @@
-import React from 'react';
 import './AddInterval.css';
 
 function AddInterval(props) {

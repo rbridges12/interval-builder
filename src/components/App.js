@@ -3,6 +3,7 @@ import ChartW from './ChartW';
 import IntervalList from './IntervalList';
 import AddInterval from './AddInterval';
 import AddIntervalSet from './AddIntervalSet';
+import Exporter from './Exporter';
 import React from 'react';
 
 
@@ -42,6 +43,7 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  // TODO: add ramp interval
   // TODO: option to exclude last rest
   handleIntervalSetAddition(event) {
     const target = event.target;
@@ -101,6 +103,12 @@ class App extends React.Component {
           <div className="AddIntervalSet">
             <AddIntervalSet handleSubmit={this.handleIntervalSetAddition} />
           </div>
+        </div>
+
+        <div className="Exporter">
+          <Exporter
+            data={this.state.interval_data}
+            fileName="test" />
         </div>
       </div>
     );

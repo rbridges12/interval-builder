@@ -28,7 +28,6 @@ function createSvg(svgClassName, svgWidth, svgHeight) {
         .append('svg')
         .attr('width', svgWidth)
         .attr('height', svgHeight)
-    // .attr("viewBox", `0 0 ${svgWidth} ${svgHeight}`)
 }
 
 function createSvgGroup(svg, margin) {

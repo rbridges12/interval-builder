@@ -5,33 +5,36 @@ import './IntervalList.css';
 
 // TODO: make table rows clickable and editable, maybe also drag and droppable to reorder
 function IntervalList(props) {
+    // const data = React.useMemo(
+    //     () => [
+    //         {
+    //             col1: '5:00',
+    //             col2: 50,
+    //         },
+    //         {
+    //             col1: '10:00',
+    //             col2: 120,
+    //         },
+    //         {
+    //             col1: '5:00',
+    //             col2: 80,
+    //         },
+    //     ],
+    //     []
+    // );
+
     const data = React.useMemo(
-        () => [
-            {
-                col1: '5:00',
-                col2: 50,
-            },
-            {
-                col1: '10:00',
-                col2: 120,
-            },
-            {
-                col1: '5:00',
-                col2: 80,
-            },
-        ],
-        []
-    );
+        () => props.data, [props.data]);
 
     const columns = React.useMemo(
         () => [
             {
                 Header: 'Duration',
-                accessor: 'col1',
+                accessor: 'duration',
             },
             {
                 Header: '% FTP',
-                accessor: 'col2',
+                accessor: 'power',
             },
         ],
         []

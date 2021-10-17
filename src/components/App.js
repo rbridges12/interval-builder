@@ -13,7 +13,7 @@ function getTestData() {
       power: 10 * i,
     });
   }
-  console.log(data);
+  // console.log(data);
   return data;
 }
 
@@ -33,7 +33,7 @@ class App extends React.Component {
         </header>
         <div className="IntervalDataContainer">
           <div className="IntervalList" >
-            <IntervalList />
+            <IntervalList data={this.state.interval_data} />
           </div>
           <div className="Chart">
             <ChartW

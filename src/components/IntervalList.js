@@ -24,6 +24,17 @@ const EditableCell = ({
     return <input value={value} onChange={onChange} onBlur={onBlur} />;
 }
 
+const DeleteCell = ({
+    row: { index },
+    deleteData,
+}) => {
+    const onClick = () => {
+        deleteData(index);
+    }
+
+    return <span onClick={onClick}>Delete</span>;
+}
+
 const defaultColumn = {
     Cell: EditableCell,
 }
@@ -32,6 +43,7 @@ const defaultColumn = {
 // TODO: make table a fixed size and add a scroll bar
 function IntervalList(props) {
     const updateMyData = props.updateMyData;
+    const deleteData = props.deleteData;
     const data = React.useMemo(
         () => props.data, [props.data]);
 
@@ -45,16 +57,24 @@ function IntervalList(props) {
                 Header: 'Power',
                 accessor: 'power',
             },
+            {
+                Header: "Delete",
+                id: 'delete',
+                accessor: "delete",
+
+                Cell: DeleteCell,
+            },
         ],
         []
     );
-
+    
     const tableInstance = useTable(
         {
             columns,
             data,
             defaultColumn,
             updateMyData,
+            deleteData,
         },
         useFlexLayout
     );

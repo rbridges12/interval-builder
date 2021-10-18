@@ -1,5 +1,4 @@
 ## Features
-- remove interval from list
 - readme
 - data driven style for power column on chart- make background color same color as bar on graph
 - drag and drop rows into a different order

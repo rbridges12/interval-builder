@@ -32,7 +32,8 @@ const DeleteCell = ({
         deleteData(index);
     }
 
-    return <span onClick={onClick}>Delete</span>;
+    // return <span onClick={onClick}>Delete</span>;
+    return <button onClick={onClick}>X</button>
 }
 
 const defaultColumn = {
@@ -67,7 +68,7 @@ function IntervalList(props) {
         ],
         []
     );
-    
+
     const tableInstance = useTable(
         {
             columns,

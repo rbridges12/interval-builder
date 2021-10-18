@@ -1,7 +1,8 @@
 fieldset {
     width: 250px;
     border-radius: 8px;
-    border: 2px solid #616161;
+    border: 0;
+    background-color: #212121;
 }
 
 form {
@@ -15,6 +16,14 @@ legend {
     font-size: calc(12px + 1vmin);
 }
 
+span {
+    color: white;
+    font-size: calc(12px + 1vmin);
+    font-weight: bold;
+    display: block;
+    padding: 5%;
+}
+
 label {
     /* display: inline-block; */
     float: left;
@@ -23,15 +32,28 @@ label {
 }
 
 input[type=text] {
-    float: right;
-    width: 50px;
+    float: center;
+    width: 80%;
     margin: 4px;
-    border: 2px solid #616161;
+    /* border: 2px solid #616161; */
+    border: 0;
     border-radius: 8px;
-    background-color: #212121;
+    background-color: #424242;
     color: white;
     font-size: calc(10px + 1vmin);
     text-align: center;
+}
+
+::placeholder {
+    color: #9e9e9e;
+    text-align: left;
+    padding-left: 4px;
+}
+
+input[type=text]:focus {
+    border:0;
+    outline:none;
+    /* background-color: ; */
 }
 
 input[type=submit] {
@@ -40,10 +62,12 @@ input[type=submit] {
     margin: 4px;
     color: white;
     font-size: calc(10px + 1vmin);
-    padding-top: 6px;
+    /* padding-top: 2%;
     padding-bottom: 6px;
     padding-left: 6px;
-    padding-right: 6px;
+    padding-right: 6px; */
+    padding: 2%;
+    margin-top: 5%;
     background-color: #424242;
     border-radius: 20px;
     border: 2px solid #424242;

@@ -3,19 +3,17 @@ import './AddInterval.css';
 function AddInterval(props) {
     return (
         <fieldset>
-            <legend>Add Interval</legend>
+            <span>Add Interval</span>
             <form onSubmit={props.handleSubmit}>
-                <label>
-                    Duration:
-                    <input
-                        name="duration"
-                        type="text" />
-                </label>
+                <input
+                    name="duration"
+                    placeholder="Duration"
+                    type="text" />
                 <br />
                 <label>
-                    Power:
                     <input
                         name="power"
+                        placeholder="Power"
                         type="text" />
                 </label>
                 <br />

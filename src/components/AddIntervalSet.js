@@ -1,42 +1,42 @@
-import './AddIntervalSet.css';
+import './AddInterval.css';
 
 function AddInterval(props) {
     return (
         <fieldset>
-            <legend>Add Interval Set</legend>
+            <span>Add Interval Set</span>
             <form onSubmit={props.handleSubmit}>
                 <label>
-                    On Duration:
                     <input
                         name="on_duration"
+                        placeholder="On Duration"
                         type="text" />
                 </label>
                 <br />
                 <label>
-                    On Power:
                     <input
                         name="on_power"
+                        placeholder="On Power"
                         type="text" />
                 </label>
                 <br />
                 <label>
-                    Off Duration:
                     <input
                         name="off_duration"
+                        placeholder="Off Duration"
                         type="text" />
                 </label>
                 <br />
                 <label>
-                    Off Power:
                     <input
                         name="off_power"
+                        placeholder="Off Power"
                         type="text" />
                 </label>
                 <br />
                 <label>
-                    Reps:
                     <input
                         name="reps"
+                        placeholder="Reps"
                         type="text" />
                 </label>
                 <br />

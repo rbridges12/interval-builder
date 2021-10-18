@@ -28,6 +28,7 @@ class App extends React.Component {
 
     this.handleIntervalAddition = this.handleIntervalAddition.bind(this);
     this.handleIntervalSetAddition = this.handleIntervalSetAddition.bind(this);
+    this.handleDataChange = this.handleDataChange.bind(this);
   }
 
   handleIntervalAddition(event) {
@@ -71,6 +72,24 @@ class App extends React.Component {
     event.preventDefault();
   }
 
+  handleDataChange(rowIndex, columnId, value) {
+    console.log(rowIndex);
+    console.log(columnId);
+    console.log(value);
+    let changed_interval_data = this.state.interval_data;
+    let changed_interval = this.state.interval_data[rowIndex];
+    if (columnId === "duration") {
+      changed_interval.duration = Number(value);
+    }
+    else if (columnId === "power") {
+      changed_interval.power = Number(value);
+    }
+    changed_interval_data[rowIndex] = changed_interval;
+    this.setState(prevState => ({
+      interval_data: changed_interval_data,
+    }))
+  }
+
   render() {
     return (
       <div className="App">
@@ -79,7 +98,10 @@ class App extends React.Component {
         </header>
         <div className="IntervalDataContainer">
           <div className="IntervalList" >
-            <IntervalList data={this.state.interval_data} />
+            <IntervalList
+              data={this.state.interval_data}
+              updateMyData={this.handleDataChange}
+            />
           </div>
           <div className="Chart">
             <ChartW

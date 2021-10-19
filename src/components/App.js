@@ -1,6 +1,6 @@
 import './App.css';
 import ChartW from './ChartW';
-import IntervalList from './IntervalList';
+import IntervalTable from './IntervalTable';
 import AddInterval from './AddInterval';
 import AddIntervalSet from './AddIntervalSet';
 import Exporter from './Exporter';
@@ -103,10 +103,10 @@ class App extends React.Component {
           Interval Builder
         </header>
         <div className="IntervalDataContainer">
-          <div className="IntervalList" >
-            <IntervalList
+          <div className="IntervalTable" >
+            <IntervalTable
               data={this.state.interval_data}
-              updateMyData={this.handleDataChange}
+              updateData={this.handleDataChange}
               deleteData={this.handleDeleteInterval}
             />
           </div>

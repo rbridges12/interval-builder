@@ -1,20 +1,21 @@
 import React from 'react';
 import { useFlexLayout, useTable } from 'react-table';
-import './IntervalList.css';
+import './IntervalTable.css';
 
 
+// Cell component that displays editable data
 const EditableCell = ({
     value: initialValue,
     row: { index },
     column: { id },
-    updateMyData,
+    updateData,
 }) => {
     const [value, setValue] = React.useState(initialValue);
     const onChange = e => {
         setValue(e.target.value);
     };
     const onBlur = () => {
-        updateMyData(index, id, value);
+        updateData(index, id, value);
     };
 
     React.useEffect(() => {
@@ -24,6 +25,7 @@ const EditableCell = ({
     return <input value={value} onChange={onChange} onBlur={onBlur} />;
 }
 
+// component for a cell containing a delete row button
 const DeleteCell = ({
     row: { index },
     deleteData,
@@ -32,7 +34,6 @@ const DeleteCell = ({
         deleteData(index);
     }
 
-    // return <span onClick={onClick}>Delete</span>;
     return <button onClick={onClick}>X</button>
 }
 
@@ -40,13 +41,15 @@ const defaultColumn = {
     Cell: EditableCell,
 }
 
-// TODO: make table rows clickable and editable, maybe also drag and droppable to reorder
+// TODO: drag and droppable to reorder
 // TODO: make table a fixed size and add a scroll bar
-function IntervalList(props) {
-    const updateMyData = props.updateMyData;
-    const deleteData = props.deleteData;
-    const data = React.useMemo(
-        () => props.data, [props.data]);
+function IntervalTable(props) {
+    // const updateData = props.updateData;
+    // const deleteData = props.deleteData;
+    // const data = React.useMemo(
+    //     () => props.data, [props.data]);
+    const { data, updateData, deleteData } = props;
+    // const [records, setRecords] = React.useState(data);
 
     const columns = React.useMemo(
         () => [
@@ -68,13 +71,17 @@ function IntervalList(props) {
         ],
         []
     );
+    // const moveRow = (dragIndex, hoverIndex) => {
+    //     // const dragRecord = records[dragIndex]
+    //     console.log(`drag index: ${dragIndex}, hover index: ${hoverIndex}`)
+    // }
 
     const tableInstance = useTable(
         {
             columns,
             data,
             defaultColumn,
-            updateMyData,
+            updateData,
             deleteData,
         },
         useFlexLayout
@@ -87,6 +94,7 @@ function IntervalList(props) {
         prepareRow,
     } = tableInstance;
 
+    // render table
     return (
         <table {...getTableProps()}>
             <thead>
@@ -121,4 +129,4 @@ function IntervalList(props) {
     );
 }
 
-export default IntervalList;
+export default IntervalTable;

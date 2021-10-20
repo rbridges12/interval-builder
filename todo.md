@@ -3,6 +3,7 @@
 - data driven style for power column on chart- make background color same color as bar on graph
 - drag and drop rows into a different order
 - animate table
+- upload and modify file
 - change mouse icon on all buttons to be regular and text boxes to be the I thing
 - rounded bars on the chart
 - ability to add ramp intervals

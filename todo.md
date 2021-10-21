@@ -2,6 +2,8 @@
 - readme
 - data driven style for power column on chart- make background color same color as bar on graph
 - drag and drop rows into a different order
+- scrollable table of fixed size
+- go back to flex layout for table?
 - animate table
 - upload and modify file
 - change mouse icon on all buttons to be regular and text boxes to be the I thing

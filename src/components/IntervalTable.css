@@ -4,7 +4,8 @@ table {
     border-radius: 8px;
     color: white;
     margin: 25px 0;
-    min-width: 500px;
+    min-width: 600px;
+    width:100%;
     /* text-align: left; */
     padding: 5%;
 }
@@ -21,9 +22,14 @@ tbody {
 
 td {
     /* border-bottom: 2px solid #616161; */
-    /* padding: 2% 3%; */
+    padding: 2% 3%;
     margin: 2%;
     border-radius: 8px;
+    width:20%;
+}
+
+tr {
+    width:100%
 }
 
 /* tr:last-child td {

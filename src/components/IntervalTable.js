@@ -146,7 +146,7 @@ function IntervalTable(props) {
                 Header: "Delete",
                 id: 'delete',
                 accessor: "delete",
-
+                
                 Cell: DeleteCell,
             },
         ],
@@ -165,7 +165,7 @@ function IntervalTable(props) {
             updateData,
             deleteData,
         },
-        useFlexLayout
+        // useFlexLayout
     );
     const {
         getTableProps,

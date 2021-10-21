@@ -96,7 +96,7 @@ class App extends React.Component {
       interval_data: prevState.interval_data.filter((d, i) => i !== rowIndex),
     }));
   }
-  
+
   handleMoveRow(sourceIndex, destIndex) {
     console.log(`Source: ${sourceIndex}\nDest: ${destIndex}`);
     let newData = this.state.interval_data.slice();
@@ -145,14 +145,15 @@ class App extends React.Component {
           <div className="AddIntervalSet">
             <AddIntervalSet handleSubmit={this.handleIntervalSetAddition} />
           </div>
-        </div>
-
-        <div className="Exporter">
-          <Exporter
-            data={this.state.interval_data}
-            fileName="test" />
+          <div className="Exporter">
+            <Exporter
+              data={this.state.interval_data}
+              fileName="test" />
+          </div>
         </div>
       </div>
+
+
     );
   }
 }

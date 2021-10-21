@@ -47,10 +47,24 @@ function Exporter(props) {
     const blob = new Blob([mrcString]);
     const DownloadUrl = URL.createObjectURL(blob);
     return (
-        <a
-            download={fileName}
-            href={DownloadUrl}
-        >Download MRC</a>
+        <div className="Exporter">
+            <span>Export File</span>
+            <form>
+                <input
+                    type="text"
+                    name="filename"
+                    placeholder="File Name"
+                />
+                <select>
+                    <option value="mrc">.mrc</option>
+                    <option valuie="erg">.erg</option>
+                </select>
+                <a
+                    download={fileName}
+                    href={DownloadUrl}
+                >Download</a>
+            </form>
+        </div>
     );
 }
 

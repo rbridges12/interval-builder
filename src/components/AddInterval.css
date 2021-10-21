@@ -70,10 +70,12 @@ input[type=submit] {
     margin-top: 5%;
     background-color: #424242;
     border-radius: 20px;
-    border: 2px solid #424242;
+    /* border: 2px solid #424242; */
 }
 
 input[type=submit]:hover {
-    border: 2px solid white;
+    /* border: 2px solid white; */
+    background-color: #616161;
+    outline: none;
     /* background-color: lightsalmon; */
 }

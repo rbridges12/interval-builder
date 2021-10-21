@@ -1,11 +1,36 @@
-a {
+.Exporter {
+    background-color: #212121;
     color: white;
-    font-size: calc(14px + 1vmin);
+    border: 0;
+    border-radius: 8px;
+    /* width: 100%; */
+    width: 250px;
+    height: 250px;
+}
+
+span {
+    color: white;
+    font-size: calc(12px + 1vmin);
+    font-weight: bold;
+    display: block;
+    padding: 5%;
+}
+
+a {
+    width: 300px;
+    font-family: inherit;
+    margin: 4px;
+    color: white;
+    font-size: calc(10px + 1vmin);
+    padding: 2% 10%;
+    margin-top: 5%;
+    background-color: #424242;
+    border-radius: 20px;
+    /* border: 2px solid #424242; */
     text-decoration: none;
-    padding: 8px;
 }
 
 a:hover {
-    border: 2px solid white;
-    border-radius: 40px;
+    /* border:2px solid white; */
+    background-color: #616161;
 }

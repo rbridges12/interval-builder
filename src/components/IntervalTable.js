@@ -112,9 +112,11 @@ const Row = ({ row, index, moveRow }) => {
 
     return (
         <tr ref={dropRef} style={{ opacity }} {...row.getRowProps()}>
-            <td ref={dragRef}>move</td>
+            <td ref={dragRef} className="move">
+                <span> </span>
+            </td>
             {row.cells.map(cell => {
-                return (<td {...cell.getCellProps()}>
+                return (<td className={cell.column.id} {...cell.getCellProps()}>
                     {cell.render("Cell")}
                 </td>);
             })}
@@ -136,7 +138,7 @@ function IntervalTable(props) {
                 accessor: 'power',
             },
             {
-                Header: "Delete",
+                Header: "",
                 id: 'delete',
                 accessor: "delete",
 
@@ -171,7 +173,7 @@ function IntervalTable(props) {
                 <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
-                            <th>Move</th>
+                            <th></th>
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps()}>
                                     {column.render('Header')}

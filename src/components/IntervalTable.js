@@ -122,16 +122,9 @@ const Row = ({ row, index, moveRow }) => {
     );
 };
 
-// TODO: drag and droppable to reorder
 // TODO: make table a fixed size and add a scroll bar
 function IntervalTable(props) {
-    // const updateData = props.updateData;
-    // const deleteData = props.deleteData;
-    // const data = React.useMemo(
-    //     () => props.data, [props.data]);
-    const { data, updateData, deleteData } = props;
-    // const [records, setRecords] = React.useState(data);
-
+    const { data, updateData, deleteData, moveRow } = props;
     const columns = React.useMemo(
         () => [
             {
@@ -146,16 +139,12 @@ function IntervalTable(props) {
                 Header: "Delete",
                 id: 'delete',
                 accessor: "delete",
-                
+
                 Cell: DeleteCell,
             },
         ],
         []
     );
-    const moveRow = (dragIndex, hoverIndex) => {
-        // const dragRecord = records[dragIndex]
-        console.log(`drag index: ${dragIndex}, hover index: ${hoverIndex}`)
-    }
 
     const tableInstance = useTable(
         {
@@ -202,35 +191,9 @@ function IntervalTable(props) {
                                     row={row}
                                     moveRow={moveRow}
                                 />
-                                //     <tr {...row.getRowProps()}>
-                                //     <td>move</td>
-                                //     {row.cells.map(cell => {
-                                //         return (<td {...cell.getCellProps()}>
-                                //             {cell.render("Cell")}
-                                //         </td>);
-                                //     })}
-                                // </tr>
                             )
                     )}
                 </tbody>
-
-                {/* <tbody {...getTableBodyProps()}>
-                    {rows.map(row => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()}>
-                                <td>move</td>
-                                {row.cells.map(cell => {
-                                    return (
-                                        <td {...cell.getCellProps()}>
-                                            {cell.render('Cell')}
-                                        </td>
-                                    )
-                                })}
-                            </tr>
-                        )
-                    })}
-                </tbody> */}
             </table>
         </DndProvider>
     );

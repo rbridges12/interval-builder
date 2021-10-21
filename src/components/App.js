@@ -30,6 +30,7 @@ class App extends React.Component {
     this.handleIntervalSetAddition = this.handleIntervalSetAddition.bind(this);
     this.handleDataChange = this.handleDataChange.bind(this);
     this.handleDeleteInterval = this.handleDeleteInterval.bind(this);
+    this.handleMoveRow = this.handleMoveRow.bind(this);
   }
 
   handleIntervalAddition(event) {
@@ -95,6 +96,17 @@ class App extends React.Component {
       interval_data: prevState.interval_data.filter((d, i) => i !== rowIndex),
     }));
   }
+  
+  handleMoveRow(sourceIndex, destIndex) {
+    console.log(`Source: ${sourceIndex}\nDest: ${destIndex}`);
+    let newData = this.state.interval_data.slice();
+    let sourceData = newData[sourceIndex];
+    newData.splice(sourceIndex, 1);
+    newData.splice(destIndex, 0, sourceData)
+    this.setState(prevState => ({
+      interval_data: newData,
+    }))
+  }
 
   render() {
     return (
@@ -108,6 +120,7 @@ class App extends React.Component {
               data={this.state.interval_data}
               updateData={this.handleDataChange}
               deleteData={this.handleDeleteInterval}
+              moveRow={this.handleMoveRow}
             />
           </div>
           <div className="Chart">

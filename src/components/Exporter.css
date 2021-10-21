@@ -1,11 +1,17 @@
-.Exporter {
+fieldset {
     background-color: #212121;
     color: white;
     border: 0;
     border-radius: 8px;
     /* width: 100%; */
-    width: 250px;
-    height: 250px;
+    /* width: 250px;
+    height: 250px; */
+}
+
+form {
+    color:white;
+    font-size: calc(10px + 1vmin);
+    /* display: flex; */
 }
 
 span {
@@ -16,21 +22,76 @@ span {
     padding: 5%;
 }
 
-a {
-    width: 300px;
-    font-family: inherit;
+label {
+    /* display: inline-block; */
+    float: left;
+    display: block;
+    width: 100%;
+}
+
+input[type=text] {
+    float: center;
+    width: 80%;
     margin: 4px;
+    /* border: 2px solid #616161; */
+    border: 0;
+    border-radius: 8px;
+    background-color: #424242;
     color: white;
     font-size: calc(10px + 1vmin);
-    padding: 2% 10%;
-    margin-top: 5%;
+    text-align: center;
+}
+
+::placeholder {
+    color: #9e9e9e;
+    text-align: left;
+    padding-left: 4px;
+}
+
+input[type=text]:focus {
+    border:0;
+    outline:none;
+    /* background-color: ; */
+}
+
+select {
+    color: white;
+    font-family: inherit;
+    font-size: calc(10px + 1vmin);
+    background-color: #424242;
+    border: 0;
+    border-radius: 8px;
+    padding: 2%;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    margin-left: 10px;
+}
+
+select:focus {
+    outline: none;
+}
+
+a {
+    width: 150px;
+    font-family: inherit;
+    /* margin: 4px; */
+    color: white;
+    font-size: calc(10px + 1vmin);
+    /* padding-top: 2%;
+    padding-bottom: 6px;
+    padding-left: 6px;
+    padding-right: 6px; */
+    padding: 2%;
+    margin: 5%;
     background-color: #424242;
     border-radius: 20px;
-    /* border: 2px solid #424242; */
+    font-weight: normal;
     text-decoration: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 a:hover {
-    /* border:2px solid white; */
     background-color: #616161;
 }

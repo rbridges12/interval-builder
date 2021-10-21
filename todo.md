@@ -11,6 +11,7 @@
 - option to exclude last rest in an interval set
 - ability to add interval block (3x5x2on1off)
 - export as ERG file
+- power zones
 - select format to export as
 - choose exported filename
 - fixed size scrollable table

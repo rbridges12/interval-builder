@@ -110,10 +110,8 @@ const Row = ({ row, index, moveRow }) => {
     preview(drop(dropRef));
     drag(dragRef);
 
-    const test = row.cells[0].render("Cell");
-
     return (
-        <tr ref={dropRef} style={{ opacity }}>
+        <tr ref={dropRef} style={{ opacity }} {...row.getRowProps()}>
             <td ref={dragRef}>move</td>
             {row.cells.map(cell => {
                 return (<td {...cell.getCellProps()}>
@@ -184,6 +182,7 @@ function IntervalTable(props) {
                 <thead>
                     {headerGroups.map(headerGroup => (
                         <tr {...headerGroup.getHeaderGroupProps()}>
+                            <th>Move</th>
                             {headerGroup.headers.map(column => (
                                 <th {...column.getHeaderProps()}>
                                     {column.render('Header')}
@@ -195,23 +194,16 @@ function IntervalTable(props) {
 
                 <tbody {...getTableBodyProps()}>
                     {rows.map(
-                        (row, index) =>
-                            prepareRow(row) || (
+                        (row, index) => {
+                            prepareRow(row);
+                            return (
                                 <Row
                                     index={index}
                                     row={row}
                                     moveRow={moveRow}
-                                    {...row.getRowProps()}
                                 />
-                                // {row.cells.map(cell => {
-                                //     return (
-                                //         <td {...cell.getCellProps()}>
-                                //             {cell.render('Cell')}
-                                //         </td>
-                                //     )
-                                // })}
                             )
-                    )}
+                        })}
                 </tbody>
             </table>
         </DndProvider>

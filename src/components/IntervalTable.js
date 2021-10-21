@@ -194,17 +194,43 @@ function IntervalTable(props) {
 
                 <tbody {...getTableBodyProps()}>
                     {rows.map(
-                        (row, index) => {
-                            prepareRow(row);
-                            return (
+                        (row, index) =>
+                            prepareRow(row) || (
                                 <Row
+                                    key={index}
                                     index={index}
                                     row={row}
                                     moveRow={moveRow}
                                 />
+                                //     <tr {...row.getRowProps()}>
+                                //     <td>move</td>
+                                //     {row.cells.map(cell => {
+                                //         return (<td {...cell.getCellProps()}>
+                                //             {cell.render("Cell")}
+                                //         </td>);
+                                //     })}
+                                // </tr>
                             )
-                        })}
+                    )}
                 </tbody>
+
+                {/* <tbody {...getTableBodyProps()}>
+                    {rows.map(row => {
+                        prepareRow(row);
+                        return (
+                            <tr {...row.getRowProps()}>
+                                <td>move</td>
+                                {row.cells.map(cell => {
+                                    return (
+                                        <td {...cell.getCellProps()}>
+                                            {cell.render('Cell')}
+                                        </td>
+                                    )
+                                })}
+                            </tr>
+                        )
+                    })}
+                </tbody> */}
             </table>
         </DndProvider>
     );

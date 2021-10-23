@@ -42,7 +42,7 @@ function toMRC(percent_data, filename) {
 }
 
 // TODO: add FTP here
-function toERG(watts_data, filename) {
+function toERG(percent_data, ftp, filename) {
     const units = "ENGLISH";
     const description = "a description";
     const timeUnit = "MINUTES";
@@ -61,19 +61,20 @@ function toERG(watts_data, filename) {
 
     // file interval data
     let current_time = 0;
-    for (const interval of watts_data) {
+    for (const interval of percent_data) {
+        let watts = (Number(interval.power) / 100) * Number(ftp);
 
         // start of interval
         fileString += (
             "\n" + Number(current_time).toFixed(2)
-            + "\t" + interval.power
+            + "\t" + watts.toFixed(2)
         );
         current_time += interval.duration;
 
         // end of interval
         fileString += (
             "\n" + Number(current_time).toFixed(2)
-            + "\t" + interval.power
+            + "\t" + watts.toFixed(2)
         );
     }
     fileString += "\n[END COURSE DATA]\n";
@@ -95,8 +96,9 @@ class Exporter extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            fileName: "nothing",
+            fileName: null,
             fileType: "mrc",
+            ftp: null,
         }
         this.handleChange = this.handleChange.bind(this);
     }
@@ -112,7 +114,7 @@ class Exporter extends React.Component {
             fileString = toMRC(this.props.data, filename);
         }
         else {
-            fileString = toERG(this.props.data, filename)
+            fileString = toERG(this.props.data, this.state.ftp, filename)
         }
         const blob = new Blob([fileString]);
         const DownloadUrl = URL.createObjectURL(blob);
@@ -130,6 +132,21 @@ class Exporter extends React.Component {
     render() {
         const name = this.getFileName();
         const url = this.getFileUrl();
+
+        // only render FTP entry box if erg file type is selected
+        let ftpBox = null;
+        if (this.state.fileType === "erg") {
+            ftpBox = (
+                <input
+                    type="text"
+                    name="ftp"
+                    placeholder="FTP"
+                    onChange={this.handleChange}
+                    value={this.state.ftp}
+                />
+            );
+        }
+  
         return (
             <fieldset>
                 <span>Export Workout</span>
@@ -152,6 +169,7 @@ class Exporter extends React.Component {
                         </select>
                     </label>
                     <br />
+                    {ftpBox}
                 </form>
                 <br />
                 <DownloadLink

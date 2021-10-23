@@ -134,7 +134,7 @@ function IntervalTable(props) {
                 accessor: 'duration',
             },
             {
-                Header: 'Power',
+                Header: '% FTP',
                 accessor: 'power',
             },
             {

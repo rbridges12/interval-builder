@@ -147,8 +147,7 @@ class App extends React.Component {
           </div>
           <div className="Exporter">
             <Exporter
-              data={this.state.interval_data}
-              fileName="test" />
+              data={this.state.interval_data}/>
           </div>
         </div>
       </div>

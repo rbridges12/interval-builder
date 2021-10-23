@@ -1,10 +1,10 @@
+import React from 'react';
 import './Exporter.css';
 
-function toMRC(data) {
+function toMRC(percent_data, filename) {
     // TODO: add options for all of these settings
     const units = "ENGLISH";
     const description = "a description";
-    const filename = "workout.mrc";
     const timeUnit = "MINUTES";
     const powerUnit = "PERCENT";
 
@@ -21,7 +21,7 @@ function toMRC(data) {
 
     // file interval data
     let current_time = 0;
-    for (const interval of data) {
+    for (const interval of percent_data) {
 
         // start of interval
         fileString += (
@@ -41,39 +41,126 @@ function toMRC(data) {
     return fileString;
 }
 
-function Exporter(props) {
-    const fileName = props.fileName + ".mrc";
-    const mrcString = toMRC(props.data);
-    const blob = new Blob([mrcString]);
-    const DownloadUrl = URL.createObjectURL(blob);
-    return (
-        <fieldset>
-            <span>Export Workout</span>
-            <form>
-                <input
-                    type="text"
-                    name="filename"
-                    placeholder="File Name"
-                />
-                <br />
-                <label>
-                    File Type:
-                    <select>
-                        <option value="mrc">.mrc</option>
-                        <option valuie="erg">.erg</option>
-                    </select>
-                </label>
-                <br />
+// TODO: add FTP here
+function toERG(watts_data, filename) {
+    const units = "ENGLISH";
+    const description = "a description";
+    const timeUnit = "MINUTES";
+    const powerUnit = "WATTS";
 
-                {/* <button>Download</button> */}
-            </form>
-            <br />
-            <a
-                download={fileName}
-                href={DownloadUrl}
-            >Download</a>
-        </fieldset>
+    // file header
+    let fileString = (
+        "[COURSE HEADER]\nVERSION = 2\n" +
+        "UNITS = " + units +
+        "\nDESCRIPTION = " + description +
+        "\nFILE NAME = " + filename +
+        "\n" + timeUnit + " " + powerUnit +
+        "\n[END COURSE HEADER]\n" +
+        "[COURSE DATA]"
     );
+
+    // file interval data
+    let current_time = 0;
+    for (const interval of watts_data) {
+
+        // start of interval
+        fileString += (
+            "\n" + Number(current_time).toFixed(2)
+            + "\t" + interval.power
+        );
+        current_time += interval.duration;
+
+        // end of interval
+        fileString += (
+            "\n" + Number(current_time).toFixed(2)
+            + "\t" + interval.power
+        );
+    }
+    fileString += "\n[END COURSE DATA]\n";
+    return fileString;
+
+}
+
+function DownloadLink(props) {
+    const { fileName, URL } = props;
+    return (
+        <a
+            download={fileName}
+            href={URL}
+        >Download</a>
+    );
+}
+
+class Exporter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fileName: "nothing",
+            fileType: "mrc",
+        }
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    getFileName() {
+        return `${this.state.fileName}.${this.state.fileType}`;
+    }
+
+    getFileUrl() {
+        const filename = this.getFileName();
+        let fileString;
+        if (this.state.fileType === "mrc") {
+            fileString = toMRC(this.props.data, filename);
+        }
+        else {
+            fileString = toERG(this.props.data, filename)
+        }
+        const blob = new Blob([fileString]);
+        const DownloadUrl = URL.createObjectURL(blob);
+        return DownloadUrl;
+    }
+
+    handleChange(event) {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    }
+
+    render() {
+        const name = this.getFileName();
+        const url = this.getFileUrl();
+        return (
+            <fieldset>
+                <span>Export Workout</span>
+                <form>
+                    <input
+                        type="text"
+                        name="fileName"
+                        placeholder="File Name"
+                        onChange={this.handleChange}
+                        value={this.state.fileName}
+                    />
+                    <br />
+                    <label>
+                        File Type:
+                        <select value={this.state.fileType}
+                            name="fileType"
+                            onChange={this.handleChange}>
+                            <option value="mrc">.mrc</option>
+                            <option value="erg">.erg</option>
+                        </select>
+                    </label>
+                    <br />
+                </form>
+                <br />
+                <DownloadLink
+                    fileName={name}
+                    URL={url} />
+            </fieldset>
+        );
+    }
+
 }
 
 export default Exporter;

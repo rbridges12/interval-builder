@@ -1,5 +1,5 @@
 ## Features
-- readme
+- styled-components?
 - data driven style for power column on chart- make background color same color as bar on graph
 - scrollable table of fixed size
 - go back to flex layout for table?
@@ -7,11 +7,13 @@
 - upload and modify file
 - change mouse icon on all buttons to be regular and text boxes to be the I thing
 - rounded bars on the chart
-- ability to add ramp intervals
+- make sure all components are scaleable
+- ability to add ramp intervals  
 - option to exclude last rest in an interval set
 - ability to add interval block (3x5x2on1off)
 - export as ERG file
 - power zones
+- put it on Heroku
 - select format to export as
 - choose exported filename
 - fixed size scrollable table

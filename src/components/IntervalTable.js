@@ -130,11 +130,11 @@ function IntervalTable(props) {
     const columns = React.useMemo(
         () => [
             {
-                Header: 'Duration',
+                Header: 'Duration (min)',
                 accessor: 'duration',
             },
             {
-                Header: '% FTP',
+                Header: 'Power (% FTP)',
                 accessor: 'power',
             },
             {

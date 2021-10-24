@@ -41,7 +41,7 @@ function clearSvg(svgClassName) {
 }
 
 function getColor(powerPercent) {
-    let scaledPower = 0.2 + (powerPercent / 500);
+    let scaledPower = 0.08 + (powerPercent / 170);
     return interpolateTurbo(scaledPower);
 }
 

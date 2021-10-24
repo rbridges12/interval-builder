@@ -8,13 +8,40 @@ import React from 'react';
 
 
 function getTestData() {
-  const data = [];
-  for (let i = 1; i <= 50; i += 5) {
-    data.push({
-      duration: 60 - i,
-      power: 10 * i,
-    });
-  }
+  const data = [
+    {
+      duration: 15,
+      power: 60,
+    },
+    {
+      duration: 5,
+      power: 120,
+    },
+    {
+      duration: 5,
+      power: 30,
+    },
+    {
+      duration: 5,
+      power: 120,
+    },
+    {
+      duration: 5,
+      power: 30,
+    },
+    {
+      duration: 5,
+      power: 120,
+    },
+    {
+      duration: 5,
+      power: 30,
+    },
+    {
+      duration: 15,
+      power: 60,
+    }
+  ];
   return data;
 }
 
@@ -126,7 +153,7 @@ class App extends React.Component {
           <div className="Chart">
             <ChartW
               data={this.state.interval_data}
-              spacing={3}
+              spacing={1}
               svgWidth={600}
               svgHeight={500}
               margin={{
@@ -147,7 +174,7 @@ class App extends React.Component {
           </div>
           <div className="Exporter">
             <Exporter
-              data={this.state.interval_data}/>
+              data={this.state.interval_data} />
           </div>
         </div>
       </div>

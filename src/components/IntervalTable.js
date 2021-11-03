@@ -56,7 +56,11 @@ const defaultColumn = {
 
 const DND_ITEM_TYPE = "row";
 
-const Row = ({ row, index, moveRow }) => {
+const Row = ({
+    row,
+    index,
+    moveRow
+}) => {
     const dropRef = React.useRef(null);
     const dragRef = React.useRef(null);
 
@@ -124,7 +128,7 @@ const Row = ({ row, index, moveRow }) => {
     return (
         <tr ref={dropRef} style={{ opacity }} {...row.getRowProps()}>
             <td ref={dragRef} className="move">
-                <span> </span>
+                <span className="material-icons">drag_handle</span>
             </td>
             {row.cells.map(cell => {
                 return (<td className={cell.column.id} {...cell.getCellProps()}>

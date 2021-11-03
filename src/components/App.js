@@ -154,6 +154,7 @@ class App extends React.Component {
             <ChartW
               data={this.state.interval_data}
               spacing={1}
+              radius={10}
               svgWidth={600}
               svgHeight={500}
               margin={{

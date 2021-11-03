@@ -49,7 +49,7 @@ function getColor(powerPercent) {
 // TODO: make chart responsive
 // TODO: add tooltips to bars that display interval data
 function ChartW(props) {
-    const { svgWidth, svgHeight, margin, data, spacing } = props;
+    const { svgWidth, svgHeight, margin, data, spacing, radius } = props;
 
     useEffect(() => {
         clearSvg('.svg-container');
@@ -92,6 +92,7 @@ function ChartW(props) {
                 return x(values[i]);
             })
             .attr('width', datum => x(datum.duration))
+            .attr('rx', radius)
             .attr('y', datum => y(datum.power))
             .attr('height', datum => height - y(datum.power))
     }, [svgWidth, svgHeight, margin, data, spacing]);

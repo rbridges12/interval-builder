@@ -2,11 +2,11 @@
 - styled-components?
 - data driven style for power column on chart- make background color same color as bar on graph
 - scrollable table of fixed size
+- tab icon image
 - go back to flex layout for table?
 - animate table
 - upload and modify file
 - change mouse icon on all buttons to be regular and text boxes to be the I thing
-- rounded bars on the chart
 - make sure all components are scaleable
 - ability to add ramp intervals  
 - option to exclude last rest in an interval set

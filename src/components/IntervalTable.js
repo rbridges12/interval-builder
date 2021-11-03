@@ -4,7 +4,6 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import { useFlexLayout, useTable } from 'react-table';
 import './IntervalTable.css';
 
-
 // Cell component that displays editable data
 const EditableCell = ({
     value: initialValue,
@@ -38,6 +37,18 @@ const DeleteCell = ({
 
     return <button onClick={onClick}>X</button>
 };
+
+const DeleteAllCell = ({
+    deleteAll,
+}) => {
+    const onClick = () => {
+        deleteAll();
+    }
+
+    return <button className="deleteAll" onClick={onClick}>
+        <i className="material-icons">delete_forever</i>
+    </button>
+}
 
 const defaultColumn = {
     Cell: EditableCell,
@@ -126,7 +137,7 @@ const Row = ({ row, index, moveRow }) => {
 
 // TODO: make table a fixed size and add a scroll bar
 function IntervalTable(props) {
-    const { data, updateData, deleteData, moveRow } = props;
+    const { data, updateData, deleteData, deleteAll, moveRow } = props;
     const columns = React.useMemo(
         () => [
             {
@@ -138,7 +149,7 @@ function IntervalTable(props) {
                 accessor: 'power',
             },
             {
-                Header: "",
+                Header: DeleteAllCell,
                 id: 'delete',
                 accessor: "delete",
 
@@ -155,6 +166,7 @@ function IntervalTable(props) {
             defaultColumn,
             updateData,
             deleteData,
+            deleteAll,
         },
         // useFlexLayout
     );

@@ -57,6 +57,7 @@ class App extends React.Component {
     this.handleIntervalSetAddition = this.handleIntervalSetAddition.bind(this);
     this.handleDataChange = this.handleDataChange.bind(this);
     this.handleDeleteInterval = this.handleDeleteInterval.bind(this);
+    this.handleDeleteAll = this.handleDeleteAll.bind(this);
     this.handleMoveRow = this.handleMoveRow.bind(this);
   }
 
@@ -124,6 +125,13 @@ class App extends React.Component {
     }));
   }
 
+  handleDeleteAll() {
+    console.log("Clear all!");
+    this.setState(prevState => ({
+      interval_data: [],
+    }));
+  }
+
   handleMoveRow(sourceIndex, destIndex) {
     console.log(`Source: ${sourceIndex}\nDest: ${destIndex}`);
     let newData = this.state.interval_data.slice();
@@ -147,6 +155,7 @@ class App extends React.Component {
               data={this.state.interval_data}
               updateData={this.handleDataChange}
               deleteData={this.handleDeleteInterval}
+              deleteAll={this.handleDeleteAll}
               moveRow={this.handleMoveRow}
             />
           </div>

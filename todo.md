@@ -6,14 +6,14 @@
 - go back to flex layout for table?
 - animate table
 - upload and modify file
+- fix delete all button alignment
 - change mouse icon on all buttons to be regular and text boxes to be the I thing
 - make sure all components are scaleable
 - ability to add ramp intervals  
 - option to exclude last rest in an interval set
 - ability to add interval block (3x5x2on1off)
-- power zones
+- power zones (add zone column to chart?)
 - fix colors
-- put it on Heroku
 - fixed size scrollable table
 - error checking for all inputs
 - clear all

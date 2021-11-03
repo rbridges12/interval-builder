@@ -64,6 +64,13 @@ button {
     height: 30px;
 }
 
+.deleteAll {
+    background-color: inherit;
+}
+.material-icons {
+    text-align: center;
+}
+
 button:hover {
     background-color: #616161;
 }
@@ -78,5 +85,9 @@ button:hover {
 
 input:focus {
     outline: none;
+}
+
+img {
+    color: white;
 }
 
